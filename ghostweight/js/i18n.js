@@ -77,13 +77,10 @@ const I18n = {
     },
 
     /**
-     * Get base path for assets (handles subdirectories)
+     * Get base path for assets
      */
     getBasePath() {
-        const path = window.location.pathname;
-        // Count directory depth and return appropriate path
-        const depth = (path.match(/\//g) || []).length - 1;
-        return depth > 0 ? '../'.repeat(depth) : './';
+        return './';
     },
 
     /**
