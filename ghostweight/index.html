@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Weight | 数字を見ない体重管理アプリ</title>
-    <meta name="description" content="体重そのものを見ずに変化だけを管理するiOSアプリ。数字のプレッシャーから解放され、変化の傾向だけに集中しましょう。">
+    <title data-i18n="meta.index.title">Ghost Weight | 数字を見ない体重管理アプリ</title>
+    <meta name="description" data-i18n="meta.index.description" content="体重そのものを見ずに変化だけを管理するiOSアプリ。数字のプレッシャーから解放され、変化の傾向だけに集中しましょう。">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/icon.png">
@@ -20,10 +20,10 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -32,23 +32,22 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
                     },
                     colors: {
                         ghost: {
-                            // アプリのスクリーンショットから抽出したカラーパレット
-                            cream: '#FDF5ED',       // 背景ベース（アプリ背景色）
-                            'cream-dark': '#F5EDE5', // 背景濃いめ
-                            orange: '#F5A623',      // メインカラー（ボタン、グラフ）
-                            'orange-light': '#FFB84D', // オレンジ明るめ
-                            'orange-dark': '#E09000',  // オレンジ濃いめ
-                            mint: '#E8F5E9',        // サマリーカード背景
-                            green: '#4CAF50',       // 成功/減量表示
-                            text: '#1A1A1A',        // メインテキスト
-                            'text-light': '#6B6B6B', // サブテキスト
-                            'text-muted': '#9E9E9E', // 薄いテキスト
+                            cream: '#FDF5ED',
+                            'cream-dark': '#F5EDE5',
+                            orange: '#F5A623',
+                            'orange-light': '#FFB84D',
+                            'orange-dark': '#E09000',
+                            mint: '#E8F5E9',
+                            green: '#4CAF50',
+                            text: '#1A1A1A',
+                            'text-light': '#6B6B6B',
+                            'text-muted': '#9E9E9E',
                             white: '#FFFFFF',
-                            border: '#E0E0E0',      // ボーダー色
+                            border: '#E0E0E0',
                         }
                     },
                     animation: {
@@ -70,7 +69,6 @@
         }
     </script>
     <style>
-        /* Custom Utilities */
         .glass-panel {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
@@ -78,34 +76,17 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
         }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FDF5ED; }
+        ::-webkit-scrollbar-thumb { background: #F5A623; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #E09000; }
 
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .bento-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                grid-template-rows: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        /* Hide scrollbar for clean look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FDF5ED;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #F5A623;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #E09000;
-        }
+        /* Language switcher */
+        .lang-switch { display: flex; gap: 0.25rem; background: rgba(0,0,0,0.05); border-radius: 9999px; padding: 0.25rem; }
+        .lang-switch button { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; transition: all 0.2s; }
+        .lang-switch button.active { background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .lang-switch button:not(.active) { color: #6B6B6B; }
+        .lang-switch button:not(.active):hover { color: #1A1A1A; }
     </style>
 </head>
 <body class="bg-ghost-cream text-ghost-text font-sans antialiased overflow-x-hidden">
@@ -120,14 +101,19 @@
                     </div>
                     <span class="font-bold text-xl tracking-tight text-ghost-text">Ghost Weight</span>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#features" class="hover:text-ghost-orange transition-colors px-3 py-2 rounded-md text-sm font-medium text-ghost-text-light">機能</a>
-                        <a href="privacy.html" class="hover:text-ghost-orange transition-colors px-3 py-2 rounded-md text-sm font-medium text-ghost-text-light">プライバシー</a>
-                        <a href="#download" class="bg-ghost-orange hover:bg-ghost-orange-dark text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-ghost-orange/30">
-                            ダウンロード
-                        </a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#features" class="hover:text-ghost-orange transition-colors px-3 py-2 rounded-md text-sm font-medium text-ghost-text-light" data-i18n="nav.features">機能</a>
+                    <a href="privacy.html" class="hover:text-ghost-orange transition-colors px-3 py-2 rounded-md text-sm font-medium text-ghost-text-light" data-i18n="nav.privacy">プライバシー</a>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switch">
+                        <button data-lang-switch="ja" onclick="I18n.switchLanguage('ja')">日本語</button>
+                        <button data-lang-switch="en" onclick="I18n.switchLanguage('en')">EN</button>
                     </div>
+
+                    <a href="https://apps.apple.com/app/ghost-weight/id6757149209" class="bg-ghost-orange hover:bg-ghost-orange-dark text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-ghost-orange/30" data-i18n="nav.download">
+                        ダウンロード
+                    </a>
                 </div>
             </div>
         </div>
@@ -135,7 +121,6 @@
 
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background Gradients -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl z-0 pointer-events-none">
             <div class="absolute top-20 left-10 w-72 h-72 bg-ghost-orange/20 rounded-full blur-[100px]"></div>
             <div class="absolute bottom-20 right-10 w-96 h-96 bg-ghost-mint/60 rounded-full blur-[120px]"></div>
@@ -150,28 +135,28 @@
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-ghost-orange opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-ghost-orange"></span>
                         </span>
-                        iOS 16.0+ 対応
+                        <span data-i18n="hero.badge">iOS 16.0+ 対応</span>
                     </div>
 
                     <h1 class="text-4xl md:text-6xl font-bold leading-tight">
-                        <span class="block text-ghost-text">体重は、</span>
-                        <span class="block text-ghost-orange">見なくていい。</span>
-                        <span class="block text-ghost-text text-2xl md:text-4xl mt-4 font-medium">
+                        <span class="block text-ghost-text" data-i18n="hero.title1">体重は、</span>
+                        <span class="block text-ghost-orange" data-i18n="hero.title2">見なくていい。</span>
+                        <span class="block text-ghost-text text-2xl md:text-4xl mt-4 font-medium" data-i18n="hero.subtitle">
                             変化だけを楽しむ記録アプリ
                         </span>
                     </h1>
 
-                    <p class="text-lg md:text-xl text-ghost-text-light max-w-lg leading-relaxed">
+                    <p class="text-lg md:text-xl text-ghost-text-light max-w-lg leading-relaxed" data-i18n="hero.description">
                         「数字」を見るのは、もう終わり。 「変化」だけを楽しむ、最もストレスのない体重管理。
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#download" class="flex items-center justify-center gap-3 bg-ghost-orange text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-ghost-orange-dark transition-all transform hover:-translate-y-1 shadow-xl shadow-ghost-orange/30 group">
+                        <a href="https://apps.apple.com/app/ghost-weight/id6757149209" class="flex items-center justify-center gap-3 bg-ghost-orange text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-ghost-orange-dark transition-all transform hover:-translate-y-1 shadow-xl shadow-ghost-orange/30 group">
                             <i data-lucide="apple" class="w-6 h-6"></i>
-                            <span>App Storeで入手</span>
+                            <span data-i18n="hero.ctaAppStore">App Storeで入手</span>
                             <i data-lucide="arrow-right" class="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1"></i>
                         </a>
-                        <a href="#features" class="flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium text-ghost-text border border-ghost-border hover:bg-ghost-text/5 transition-all">
+                        <a href="#features" class="flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium text-ghost-text border border-ghost-border hover:bg-ghost-text/5 transition-all" data-i18n="hero.ctaLearnMore">
                             詳しく見る
                         </a>
                     </div>
@@ -180,34 +165,18 @@
                 <!-- Hero Image / Mockup -->
                 <div class="relative lg:h-[600px] flex justify-center items-center">
                     <div class="relative w-[300px] h-[600px] border-8 border-ghost-text rounded-[3rem] shadow-2xl bg-white overflow-hidden animate-float z-10 ring-1 ring-black/10">
-                        <!-- Screen Content -->
                         <div class="w-full h-full bg-ghost-cream flex flex-col relative">
-                            <!-- Notch -->
                             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-ghost-text rounded-b-2xl z-20"></div>
-                            <!-- Image Fallback Logic -->
                             <img src="img/screenshot_1.png" alt="App Screenshot" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='flex';">
-
-                            <!-- Fallback UI if image fails -->
                             <div id="hero-fallback" class="hidden w-full h-full flex-col p-6 pt-14 bg-ghost-cream">
                                 <div class="text-center mb-8">
                                     <h3 class="text-3xl font-bold text-ghost-text mb-2">-0.5 <span class="text-sm text-ghost-text-light">kg</span></h3>
                                     <p class="text-xs text-ghost-text-light">前回差分</p>
                                 </div>
-                                <div class="flex-1 w-full bg-ghost-orange/10 rounded-2xl relative overflow-hidden">
-                                    <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-ghost-orange/20 to-transparent"></div>
-                                    <!-- Fake Graph Line -->
-                                    <svg class="absolute bottom-10 left-0 w-full h-20" viewBox="0 0 100 20" preserveAspectRatio="none">
-                                        <path d="M0,10 Q25,15 50,5 T100,12" fill="none" stroke="#F5A623" stroke-width="2"/>
-                                    </svg>
-                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Decorative Elements behind phone -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[650px] border border-ghost-mint rounded-[3.5rem] -z-20 -rotate-3"></div>
-
-                    <!-- Floating Ghost Mascots -->
                     <img src="img/ghost.png" alt="" class="absolute -left-8 top-20 w-20 h-20 animate-float opacity-60 hidden lg:block" style="animation-delay: 0s;">
                     <img src="img/ghost_smile.png" alt="" class="absolute -right-12 bottom-32 w-24 h-24 animate-float opacity-50 hidden lg:block" style="animation-delay: 2s;">
                 </div>
@@ -219,10 +188,9 @@
     <section class="py-20 bg-ghost-cream-dark relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold mb-4 text-ghost-text">もう、一喜一憂しなくていい。</h2>
-                <p class="text-ghost-text-light">
-                    体重計に乗るのが「怖い」から「楽しみ」に変わる体験を。<br>
-                    Ghost Weightは、あなたの心に寄り添う体重管理アプリです。
+                <h2 class="text-3xl font-bold mb-4 text-ghost-text" data-i18n="philosophy.title">もう、一喜一憂しなくていい。</h2>
+                <p class="text-ghost-text-light" data-i18n-html="philosophy.description">
+                    体重計に乗るのが「怖い」から「楽しみ」に変わる体験を。<br>Ghost Weightは、あなたの心に寄り添う体重管理アプリです。
                 </p>
             </div>
 
@@ -232,8 +200,8 @@
                     <div class="w-12 h-12 bg-ghost-orange/20 rounded-lg flex items-center justify-center mb-6 text-ghost-orange">
                         <i data-lucide="eye-off" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-ghost-text">表示されるのは「基準値との差」だけ。</h3>
-                    <p class="text-ghost-text-light text-sm leading-relaxed">
+                    <h3 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="philosophy.card1.title">表示されるのは「基準値との差」だけ。</h3>
+                    <p class="text-ghost-text-light text-sm leading-relaxed" data-i18n="philosophy.card1.description">
                         「昨日より減った！」「先週よりこれだけ変わった！」というポジティブな変化だけに集中できるから、モチベーションが途切れず、自然と習慣が続きます。
                     </p>
                 </div>
@@ -243,8 +211,8 @@
                     <div class="w-12 h-12 bg-ghost-orange/20 rounded-lg flex items-center justify-center mb-6 text-ghost-orange">
                         <i data-lucide="shield-check" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-ghost-text">誰にもバレない「鉄壁のプライバシー」</h3>
-                    <p class="text-ghost-text-light text-sm leading-relaxed">
+                    <h3 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="philosophy.card2.title">誰にもバレない「鉄壁のプライバシー」</h3>
+                    <p class="text-ghost-text-light text-sm leading-relaxed" data-i18n="philosophy.card2.description">
                         誰かに画面を見られても大丈夫。Face ID / Touch IDによる生体認証ロックを標準装備。あなたの秘密は、ずっと守られます。
                     </p>
                 </div>
@@ -254,8 +222,8 @@
                     <div class="w-12 h-12 bg-ghost-orange/20 rounded-lg flex items-center justify-center mb-6 text-ghost-orange">
                         <i data-lucide="trending-down" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-ghost-text">「点」ではなく「線」を見る</h3>
-                    <p class="text-ghost-text-light text-sm leading-relaxed">
+                    <h3 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="philosophy.card3.title">「点」ではなく「線」を見る</h3>
+                    <p class="text-ghost-text-light text-sm leading-relaxed" data-i18n="philosophy.card3.description">
                         直感的で美しいグラフとカレンダーで、長期的な変化を把握。1日ごとの増減（点）に一喜一憂せず、大きな流れ（線）をつかめます。忙しい朝でも1秒で記録完了。ズボラな方でも「これなら続く」と実感いただけます。
                     </p>
                 </div>
@@ -266,10 +234,9 @@
     <!-- Features Section -->
     <section id="features" class="py-20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-12 text-center text-ghost-text">機能ハイライト</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center text-ghost-text" data-i18n="features.title">機能ハイライト</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
                 <!-- Feature: Main Screen -->
                 <div class="glass-panel rounded-3xl overflow-hidden group hover:shadow-xl transition-all">
                     <div class="p-4 bg-gradient-to-b from-ghost-orange/10 to-ghost-cream">
@@ -279,8 +246,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-ghost-text">数字は見えない、変化だけ。</h3>
-                        <p class="text-ghost-text-light text-sm">体重そのものは表示されず、基準値との差だけを確認。心の負担なく続けられます。</p>
+                        <h3 class="text-xl font-bold mb-2 text-ghost-text" data-i18n="features.feature1.title">数字は見えない、変化だけ。</h3>
+                        <p class="text-ghost-text-light text-sm" data-i18n="features.feature1.description">体重そのものは表示されず、基準値との差だけを確認。心の負担なく続けられます。</p>
                     </div>
                 </div>
 
@@ -293,8 +260,8 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-ghost-text">日々の変化が、ひと目でわかる。</h3>
-                        <p class="text-ghost-text-light text-sm">なめらかなグラフで推移を確認。1週間・1ヶ月の振り返りもスムーズに。</p>
+                        <h3 class="text-xl font-bold mb-2 text-ghost-text" data-i18n="features.feature2.title">日々の変化が、ひと目でわかる。</h3>
+                        <p class="text-ghost-text-light text-sm" data-i18n="features.feature2.description">なめらかなグラフで推移を確認。1週間・1ヶ月の振り返りもスムーズに。</p>
                     </div>
                 </div>
 
@@ -307,11 +274,10 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-ghost-text">毎日の「できた」が、自信になる。</h3>
-                        <p class="text-ghost-text-light text-sm">記録の足跡をカレンダーに。「続く」楽しさを実感できます。</p>
+                        <h3 class="text-xl font-bold mb-2 text-ghost-text" data-i18n="features.feature3.title">毎日の「できた」が、自信になる。</h3>
+                        <p class="text-ghost-text-light text-sm" data-i18n="features.feature3.description">記録の足跡をカレンダーに。「続く」楽しさを実感できます。</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -323,18 +289,14 @@
 
         <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
             <img src="img/ghost.png" alt="Ghost Weight" class="w-32 h-32 mx-auto mb-8 drop-shadow-2xl">
-            <p class="text-xl text-ghost-text-light mb-10">
-                完全無料・広告なし。<br>
-                面倒な会員登録もありません。
+            <p class="text-xl text-ghost-text-light mb-10" data-i18n-html="cta.description">
+                完全無料・広告なし。<br>面倒な会員登録もありません。
             </p>
 
-            <button class="bg-ghost-orange text-white px-10 py-4 rounded-full font-bold text-xl hover:bg-ghost-orange-dark transition-all transform hover:scale-105 shadow-2xl shadow-ghost-orange/30 inline-flex items-center gap-3">
+            <a href="https://apps.apple.com/app/ghost-weight/id6757149209" class="bg-ghost-orange text-white px-10 py-4 rounded-full font-bold text-xl hover:bg-ghost-orange-dark transition-all transform hover:scale-105 shadow-2xl shadow-ghost-orange/30 inline-flex items-center gap-3">
                 <i data-lucide="download" class="w-6 h-6"></i>
-                今すぐ始める
-            </button>
-            <p class="mt-6 text-sm text-ghost-text-muted">
-                ※ App Storeにて近日公開予定
-            </p>
+                <span data-i18n="cta.button">今すぐ始める</span>
+            </a>
         </div>
     </section>
 
@@ -347,16 +309,19 @@
             </div>
 
             <div class="flex gap-8">
-                <a href="terms.html" class="hover:text-ghost-orange transition-colors">利用規約</a>
-                <a href="privacy.html" class="hover:text-ghost-orange transition-colors">プライバシーポリシー</a>
-                <a href="mailto:hello@onigiri.work" class="hover:text-ghost-orange transition-colors">お問い合わせ</a>
+                <a href="terms.html" class="hover:text-ghost-orange transition-colors" data-i18n="footer.terms">利用規約</a>
+                <a href="privacy.html" class="hover:text-ghost-orange transition-colors" data-i18n="footer.privacy">プライバシーポリシー</a>
+                <a href="mailto:hello@onigiri.work" class="hover:text-ghost-orange transition-colors" data-i18n="footer.contact">お問い合わせ</a>
             </div>
 
-            <div>
-                &copy; 2025 Shoho Kozawa. All rights reserved.
+            <div data-i18n="footer.copyright">
+                © 2025 Shoho Kozawa. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <!-- i18n Script -->
+    <script src="js/i18n.js"></script>
 
     <script>
         // Initialize Lucide icons

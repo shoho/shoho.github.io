@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "index": {
+      "title": "Ghost Weight | Weight Tracking Without the Numbers",
+      "description": "An iOS app that tracks weight changes, not the actual numbers. Free yourself from the pressure of the scale and focus only on your progress."
+    },
+    "privacy": {
+      "title": "Privacy Policy | Ghost Weight",
+      "description": "Ghost Weight's Privacy Policy. We protect your data with care."
+    },
+    "terms": {
+      "title": "Terms of Service | Ghost Weight",
+      "description": "Ghost Weight's Terms of Service. Please read before using the app."
+    }
+  },
+  "nav": {
+    "features": "Features",
+    "privacy": "Privacy",
+    "download": "Download",
+    "backToTop": "Back to Top"
+  },
+  "hero": {
+    "badge": "iOS 16.0+ Compatible",
+    "title1": "No need to",
+    "title2": "see the number.",
+    "subtitle": "A tracking app focused on change",
+    "description": "Stop obsessing over \"the number.\" Enjoy tracking only \"the change\" — the most stress-free way to manage your weight.",
+    "ctaAppStore": "Get on App Store",
+    "ctaLearnMore": "Learn More"
+  },
+  "philosophy": {
+    "title": "No more ups and downs.",
+    "description": "Transform stepping on the scale from \"scary\" to \"exciting.\"<br>Ghost Weight is a weight management app that cares about your mental well-being.",
+    "card1": {
+      "title": "Only the difference from baseline is shown.",
+      "description": "Focus on positive changes like \"I'm down from yesterday!\" or \"Look how much I've changed this week!\" Stay motivated naturally and build lasting habits."
+    },
+    "card2": {
+      "title": "Rock-solid privacy protection",
+      "description": "No worries if someone sees your screen. Built-in Face ID / Touch ID biometric lock keeps your secrets safe, always."
+    },
+    "card3": {
+      "title": "See the \"trend,\" not the \"point\"",
+      "description": "Beautiful, intuitive graphs and calendar help you understand long-term changes. Don't stress over daily fluctuations — see the bigger picture. Record in 1 second, even on busy mornings."
+    }
+  },
+  "features": {
+    "title": "Feature Highlights",
+    "feature1": {
+      "title": "No numbers, just change.",
+      "description": "Your actual weight is never shown — only the difference from your baseline. Keep going without the mental burden."
+    },
+    "feature2": {
+      "title": "See your progress at a glance.",
+      "description": "Smooth graphs show your trends. Easy weekly and monthly reviews."
+    },
+    "feature3": {
+      "title": "Every \"done\" builds confidence.",
+      "description": "Track your journey on the calendar. Feel the joy of consistency."
+    }
+  },
+  "cta": {
+    "description": "Completely free, no ads.<br>No annoying registration required.",
+    "button": "Get Started"
+  },
+  "footer": {
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "copyright": "© 2025 Shoho Kozawa. All rights reserved."
+  },
+  "langSwitch": {
+    "ja": "日本語",
+    "en": "English"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: December 31, 2025",
+    "intro": {
+      "title": "Introduction",
+      "text": "Ghost Weight (\"the App\") is a weight management app provided by Shoho Kozawa (\"the Developer\"). This Privacy Policy explains how the App handles your information."
+    },
+    "dataCollection": {
+      "title": "Information We Collect",
+      "storedTitle": "Information the App stores",
+      "stored1": "Baseline weight data",
+      "stored2": "Difference from baseline (not your actual weight)",
+      "stored3": "Date and time of records",
+      "stored4": "App settings",
+      "notStoredTitle": "Information the App does NOT store",
+      "notStored1": "Personal information such as name or email address",
+      "notStored2": "Location data",
+      "notStored3": "Advertising identifiers or tracking data",
+      "simple": "We only store what's needed for weight tracking. We never store personal information like your name or email."
+    },
+    "dataStorage": {
+      "title": "Where Your Data is Stored",
+      "text": "All data recorded in the App is stored only on your iPhone/iPad. We never send data to the Developer's servers.",
+      "simple": "Your data stays on your phone only. It never goes out to the internet."
+    },
+    "thirdParty": {
+      "title": "Third-Party Sharing",
+      "text1": "The App does not provide, sell, or share your data with any third parties. Since we currently don't display ads, no data is shared with advertising companies.",
+      "text2": "We may introduce ads in the future. If so, we will notify you in advance through the App and by updating this Privacy Policy.",
+      "simple": "We don't sell or show your data to anyone. If we ever add ads, we'll let you know first."
+    },
+    "security": {
+      "title": "Security",
+      "text": "The App includes the following measures to protect your privacy:",
+      "item1": "Face ID / Touch ID biometric lock",
+      "item2": "No internet connection required (works offline)",
+      "simple": "Lock the app with Face ID or Touch ID. Your records stay protected even if someone sees your phone."
+    },
+    "children": {
+      "title": "Children's Privacy",
+      "text": "The App does not intentionally collect personal information from children under 13. In fact, the App is designed not to collect any personal information at all. If you're a parent with questions, please contact us."
+    },
+    "deletion": {
+      "title": "Data Deletion",
+      "text": "Deleting the App also deletes all stored data. Since no data exists on the Developer's servers, uninstalling the App completely removes everything.",
+      "simple": "Delete the app, and all your data is gone. Nothing stays behind anywhere."
+    },
+    "changes": {
+      "title": "Policy Changes",
+      "text": "This Privacy Policy may be updated as needed. We'll notify you of important changes through the App or on this page. Continued use of the App after changes means you accept the updated policy."
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "If you have questions about this Privacy Policy, please contact us at:",
+      "developer": "Developer:",
+      "email": "Email:"
+    },
+    "backToTop": "Back to Home",
+    "simpleLabel": "In simple terms:"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: December 31, 2025",
+    "intro": {
+      "title": "Introduction",
+      "text": "These Terms of Service (\"Terms\") govern your use of the iOS app \"Ghost Weight\" (\"the App\") provided by Shoho Kozawa (\"the Developer\"). By downloading or using the App, you agree to these Terms.",
+      "simple": "Before using this app, you agree to the rules written on this page."
+    },
+    "service": {
+      "title": "Service Description",
+      "text": "The App is designed to record and manage weight changes. It provides the following features:",
+      "item1": "Recording weight changes based on difference from baseline",
+      "item2": "Viewing trends through graphs and calendar",
+      "item3": "Privacy protection with biometric authentication",
+      "simple": "This app records only weight \"changes\" and shows them in graphs. Your actual weight is never displayed."
+    },
+    "conditions": {
+      "title": "Terms of Use",
+      "item1": "The App is intended for personal health management. It is not a substitute for medical care.",
+      "item2": "The App is available on iPhone/iPad running iOS 16.0 or later.",
+      "item3": "The App is provided free of charge. We currently don't show ads, but may introduce them in the future. We'll notify you in advance if we do.",
+      "simple": "This app isn't a replacement for a doctor. If you have health concerns, please consult a medical professional."
+    },
+    "prohibited": {
+      "title": "Prohibited Activities",
+      "text": "The following activities are prohibited when using the App:",
+      "item1": "Modifying, reverse engineering, or decompiling the App",
+      "item2": "Redistributing the App for commercial purposes",
+      "item3": "Using the App for illegal purposes",
+      "item4": "Actions that harm the Developer or other users",
+      "simple": "Don't take apart the app, sell it, or use it for bad things."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "item1": "The App is provided \"as is.\" The Developer does not guarantee its completeness, accuracy, or reliability.",
+      "item2": "The Developer is not liable for any damages arising from the use or inability to use the App.",
+      "item3": "The App is not a medical device. Always consult healthcare professionals for health decisions.",
+      "item4": "The Developer is not liable for data loss. We recommend regular backups of important data.",
+      "simple": "This app is a handy tool, but if something goes wrong or data is lost, the developer can't be held responsible. Please back up your important data."
+    },
+    "ip": {
+      "title": "Intellectual Property",
+      "text": "All intellectual property rights (copyright, trademark, design rights, etc.) related to the App belong to the Developer. These Terms do not transfer any such rights to users.",
+      "simple": "The app's design and code belong to the developer. Please don't copy them without permission."
+    },
+    "changes": {
+      "title": "Changes to Terms",
+      "text": "The Developer may change these Terms as needed. We'll notify you of important changes through the App or on this page. Continued use of the App after changes means you accept the updated Terms."
+    },
+    "law": {
+      "title": "Governing Law and Jurisdiction",
+      "text": "These Terms are governed by and interpreted in accordance with Japanese law. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the Tokyo District Court as the court of first instance.",
+      "simple": "These terms follow Japanese law. If there's a problem, we'll resolve it in a Japanese court."
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "If you have questions about these Terms, please contact us at:",
+      "developer": "Developer:",
+      "email": "Email:"
+    },
+    "backToTop": "Back to Home",
+    "simpleLabel": "In simple terms:"
+  }
+}

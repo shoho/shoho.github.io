@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>利用規約 | Ghost Weight</title>
-    <meta name="description" content="Ghost Weightの利用規約。ご利用前にお読みください。">
+    <title data-i18n="meta.terms.title">利用規約 | Ghost Weight</title>
+    <meta name="description" data-i18n="meta.terms.description" content="Ghost Weightの利用規約。ご利用前にお読みください。">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/icon.png">
@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -24,7 +24,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
                     },
                     colors: {
                         ghost: {
@@ -46,6 +46,14 @@
             }
         }
     </script>
+    <style>
+        /* Language switcher */
+        .lang-switch { display: flex; gap: 0.25rem; background: rgba(0,0,0,0.05); border-radius: 9999px; padding: 0.25rem; }
+        .lang-switch button { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; transition: all 0.2s; }
+        .lang-switch button.active { background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .lang-switch button:not(.active) { color: #6B6B6B; }
+        .lang-switch button:not(.active):hover { color: #1A1A1A; }
+    </style>
 </head>
 <body class="bg-ghost-cream text-ghost-text font-sans antialiased">
 
@@ -57,9 +65,16 @@
                     <img src="img/ghost.png" alt="Ghost Weight Logo" class="w-8 h-8 object-contain">
                     <span class="font-bold text-lg text-ghost-text">Ghost Weight</span>
                 </a>
-                <a href="index.html" class="text-ghost-text-light hover:text-ghost-orange transition-colors text-sm">
-                    トップに戻る
-                </a>
+                <div class="flex items-center gap-4">
+                    <!-- Language Switcher -->
+                    <div class="lang-switch">
+                        <button data-lang-switch="ja" onclick="I18n.switchLanguage('ja')">日本語</button>
+                        <button data-lang-switch="en" onclick="I18n.switchLanguage('en')">EN</button>
+                    </div>
+                    <a href="index.html" class="text-ghost-text-light hover:text-ghost-orange transition-colors text-sm" data-i18n="nav.backToTop">
+                        トップに戻る
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -70,8 +85,8 @@
 
             <!-- Header -->
             <div class="text-center mb-12">
-                <h1 class="text-3xl font-bold mb-4 text-ghost-text">利用規約</h1>
-                <p class="text-ghost-text-light">最終更新日：2025年12月31日</p>
+                <h1 class="text-3xl font-bold mb-4 text-ghost-text" data-i18n="terms.title">利用規約</h1>
+                <p class="text-ghost-text-light" data-i18n="terms.lastUpdated">最終更新日：2025年12月31日</p>
             </div>
 
             <!-- Content -->
@@ -84,15 +99,15 @@
                             <i data-lucide="file-text" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">はじめに</h2>
-                            <p class="text-ghost-text-light leading-relaxed">
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.intro.title">はじめに</h2>
+                            <p class="text-ghost-text-light leading-relaxed" data-i18n="terms.intro.text">
                                 この利用規約（以下「本規約」）は、Shoho Kozawa（以下「開発者」）が提供するiOSアプリ「Ghost Weight」（以下「本アプリ」）の利用条件を定めるものです。
                                 本アプリをダウンロードまたは使用することにより、本規約に同意したものとみなされます。
                             </p>
                             <div class="mt-4 p-4 bg-ghost-mint rounded-xl">
                                 <p class="text-sm text-ghost-text font-medium">
-                                    <strong>かんたんに言うと：</strong><br>
-                                    このアプリを使う前に、このページに書いてあるルールに同意してね、ということです。
+                                    <strong data-i18n="terms.simpleLabel">かんたんに言うと：</strong><br>
+                                    <span data-i18n="terms.intro.simple">このアプリを使う前に、このページに書いてあるルールに同意してね、ということです。</span>
                                 </p>
                             </div>
                         </div>
@@ -106,28 +121,28 @@
                             <i data-lucide="info" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">サービスの内容</h2>
-                            <p class="text-ghost-text-light leading-relaxed mb-4">
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.service.title">サービスの内容</h2>
+                            <p class="text-ghost-text-light leading-relaxed mb-4" data-i18n="terms.service.text">
                                 本アプリは、体重の変化を記録・管理するためのアプリです。以下の機能を提供します。
                             </p>
                             <ul class="space-y-2 text-ghost-text-light">
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="check" class="w-4 h-4 text-ghost-green mt-1 flex-shrink-0"></i>
-                                    <span>基準値との差分による体重変化の記録</span>
+                                    <span data-i18n="terms.service.item1">基準値との差分による体重変化の記録</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="check" class="w-4 h-4 text-ghost-green mt-1 flex-shrink-0"></i>
-                                    <span>グラフやカレンダーによる推移の確認</span>
+                                    <span data-i18n="terms.service.item2">グラフやカレンダーによる推移の確認</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="check" class="w-4 h-4 text-ghost-green mt-1 flex-shrink-0"></i>
-                                    <span>生体認証によるプライバシー保護</span>
+                                    <span data-i18n="terms.service.item3">生体認証によるプライバシー保護</span>
                                 </li>
                             </ul>
                             <div class="mt-4 p-4 bg-ghost-mint rounded-xl">
                                 <p class="text-sm text-ghost-text font-medium">
-                                    <strong>かんたんに言うと：</strong><br>
-                                    体重の「変化」だけを記録して、グラフで見られるアプリです。実際の体重は表示されません。
+                                    <strong data-i18n="terms.simpleLabel">かんたんに言うと：</strong><br>
+                                    <span data-i18n="terms.service.simple">体重の「変化」だけを記録して、グラフで見られるアプリです。実際の体重は表示されません。</span>
                                 </p>
                             </div>
                         </div>
@@ -141,25 +156,25 @@
                             <i data-lucide="user-check" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">利用条件</h2>
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.conditions.title">利用条件</h2>
                             <ul class="space-y-3 text-ghost-text-light">
                                 <li class="flex items-start gap-2">
                                     <span class="bg-ghost-orange text-white text-xs font-bold px-2 py-0.5 rounded mt-0.5">1</span>
-                                    <span>本アプリは個人的な健康管理を目的としています。医療行為の代替ではありません。</span>
+                                    <span data-i18n="terms.conditions.item1">本アプリは個人的な健康管理を目的としています。医療行為の代替ではありません。</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <span class="bg-ghost-orange text-white text-xs font-bold px-2 py-0.5 rounded mt-0.5">2</span>
-                                    <span>iOS 16.0 以上を搭載したiPhone / iPadで利用できます。</span>
+                                    <span data-i18n="terms.conditions.item2">iOS 16.0 以上を搭載したiPhone / iPadで利用できます。</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <span class="bg-ghost-orange text-white text-xs font-bold px-2 py-0.5 rounded mt-0.5">3</span>
-                                    <span>本アプリは無料で提供されます。現時点では広告は表示されませんが、将来的に広告を導入する可能性があります。その際は事前にお知らせします。</span>
+                                    <span data-i18n="terms.conditions.item3">本アプリは無料で提供されます。現時点では広告は表示されませんが、将来的に広告を導入する可能性があります。その際は事前にお知らせします。</span>
                                 </li>
                             </ul>
                             <div class="mt-4 p-4 bg-ghost-mint rounded-xl">
                                 <p class="text-sm text-ghost-text font-medium">
-                                    <strong>かんたんに言うと：</strong><br>
-                                    このアプリはお医者さんの代わりにはなりません。健康に不安があるときは、お医者さんに相談してね。
+                                    <strong data-i18n="terms.simpleLabel">かんたんに言うと：</strong><br>
+                                    <span data-i18n="terms.conditions.simple">このアプリはお医者さんの代わりにはなりません。健康に不安があるときは、お医者さんに相談してね。</span>
                                 </p>
                             </div>
                         </div>
@@ -173,32 +188,32 @@
                             <i data-lucide="ban" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">禁止事項</h2>
-                            <p class="text-ghost-text-light leading-relaxed mb-4">
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.prohibited.title">禁止事項</h2>
+                            <p class="text-ghost-text-light leading-relaxed mb-4" data-i18n="terms.prohibited.text">
                                 本アプリの利用にあたり、以下の行為を禁止します。
                             </p>
                             <ul class="space-y-2 text-ghost-text-light">
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="x" class="w-4 h-4 text-red-500 mt-1 flex-shrink-0"></i>
-                                    <span>本アプリの改変、リバースエンジニアリング、逆コンパイル</span>
+                                    <span data-i18n="terms.prohibited.item1">本アプリの改変、リバースエンジニアリング、逆コンパイル</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="x" class="w-4 h-4 text-red-500 mt-1 flex-shrink-0"></i>
-                                    <span>本アプリを商用目的で再配布すること</span>
+                                    <span data-i18n="terms.prohibited.item2">本アプリを商用目的で再配布すること</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="x" class="w-4 h-4 text-red-500 mt-1 flex-shrink-0"></i>
-                                    <span>法律に違反する目的での使用</span>
+                                    <span data-i18n="terms.prohibited.item3">法律に違反する目的での使用</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="x" class="w-4 h-4 text-red-500 mt-1 flex-shrink-0"></i>
-                                    <span>開発者や他のユーザーに損害を与える行為</span>
+                                    <span data-i18n="terms.prohibited.item4">開発者や他のユーザーに損害を与える行為</span>
                                 </li>
                             </ul>
                             <div class="mt-4 p-4 bg-ghost-mint rounded-xl">
                                 <p class="text-sm text-ghost-text font-medium">
-                                    <strong>かんたんに言うと：</strong><br>
-                                    アプリを分解したり、勝手に売ったり、悪いことに使ったりしないでね。
+                                    <strong data-i18n="terms.simpleLabel">かんたんに言うと：</strong><br>
+                                    <span data-i18n="terms.prohibited.simple">アプリを分解したり、勝手に売ったり、悪いことに使ったりしないでね。</span>
                                 </p>
                             </div>
                         </div>
@@ -212,29 +227,29 @@
                             <i data-lucide="alert-triangle" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">免責事項</h2>
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.disclaimer.title">免責事項</h2>
                             <ul class="space-y-3 text-ghost-text-light">
                                 <li class="flex items-start gap-2">
                                     <span class="bg-ghost-text-light text-white text-xs font-bold px-2 py-0.5 rounded mt-0.5">1</span>
-                                    <span>本アプリは「現状有姿」で提供されます。開発者は、本アプリの完全性、正確性、信頼性について保証しません。</span>
+                                    <span data-i18n="terms.disclaimer.item1">本アプリは「現状有姿」で提供されます。開発者は、本アプリの完全性、正確性、信頼性について保証しません。</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <span class="bg-ghost-text-light text-white text-xs font-bold px-2 py-0.5 rounded mt-0.5">2</span>
-                                    <span>本アプリの使用または使用不能から生じるいかなる損害についても、開発者は責任を負いません。</span>
+                                    <span data-i18n="terms.disclaimer.item2">本アプリの使用または使用不能から生じるいかなる損害についても、開発者は責任を負いません。</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <span class="bg-ghost-text-light text-white text-xs font-bold px-2 py-0.5 rounded mt-0.5">3</span>
-                                    <span>本アプリは医療機器ではありません。健康上の判断は、必ず医療専門家にご相談ください。</span>
+                                    <span data-i18n="terms.disclaimer.item3">本アプリは医療機器ではありません。健康上の判断は、必ず医療専門家にご相談ください。</span>
                                 </li>
                                 <li class="flex items-start gap-2">
                                     <span class="bg-ghost-text-light text-white text-xs font-bold px-2 py-0.5 rounded mt-0.5">4</span>
-                                    <span>データの損失について、開発者は責任を負いません。重要なデータは定期的にバックアップすることをおすすめします。</span>
+                                    <span data-i18n="terms.disclaimer.item4">データの損失について、開発者は責任を負いません。重要なデータは定期的にバックアップすることをおすすめします。</span>
                                 </li>
                             </ul>
                             <div class="mt-4 p-4 bg-ghost-mint rounded-xl">
                                 <p class="text-sm text-ghost-text font-medium">
-                                    <strong>かんたんに言うと：</strong><br>
-                                    このアプリは便利なツールですが、万が一うまく動かなかったり、データが消えてしまっても、開発者は責任を取れません。大事なデータはバックアップしてね。
+                                    <strong data-i18n="terms.simpleLabel">かんたんに言うと：</strong><br>
+                                    <span data-i18n="terms.disclaimer.simple">このアプリは便利なツールですが、万が一うまく動かなかったり、データが消えてしまっても、開発者は責任を取れません。大事なデータはバックアップしてね。</span>
                                 </p>
                             </div>
                         </div>
@@ -248,15 +263,15 @@
                             <i data-lucide="copyright" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">知的財産権</h2>
-                            <p class="text-ghost-text-light leading-relaxed">
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.ip.title">知的財産権</h2>
+                            <p class="text-ghost-text-light leading-relaxed" data-i18n="terms.ip.text">
                                 本アプリに関するすべての知的財産権（著作権、商標権、意匠権など）は、開発者に帰属します。
                                 本規約は、これらの権利をユーザーに譲渡するものではありません。
                             </p>
                             <div class="mt-4 p-4 bg-ghost-mint rounded-xl">
                                 <p class="text-sm text-ghost-text font-medium">
-                                    <strong>かんたんに言うと：</strong><br>
-                                    このアプリのデザインやプログラムは開発者のものです。勝手にコピーしないでね。
+                                    <strong data-i18n="terms.simpleLabel">かんたんに言うと：</strong><br>
+                                    <span data-i18n="terms.ip.simple">このアプリのデザインやプログラムは開発者のものです。勝手にコピーしないでね。</span>
                                 </p>
                             </div>
                         </div>
@@ -270,8 +285,8 @@
                             <i data-lucide="refresh-cw" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">規約の変更</h2>
-                            <p class="text-ghost-text-light leading-relaxed">
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.changes.title">規約の変更</h2>
+                            <p class="text-ghost-text-light leading-relaxed" data-i18n="terms.changes.text">
                                 開発者は、必要に応じて本規約を変更することがあります。
                                 重要な変更がある場合は、アプリ内またはこのページでお知らせします。
                                 変更後も本アプリを継続して使用することで、更新された規約に同意したものとみなされます。
@@ -287,15 +302,15 @@
                             <i data-lucide="scale" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">準拠法・管轄裁判所</h2>
-                            <p class="text-ghost-text-light leading-relaxed">
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.law.title">準拠法・管轄裁判所</h2>
+                            <p class="text-ghost-text-light leading-relaxed" data-i18n="terms.law.text">
                                 本規約は日本法に準拠し、日本法に従って解釈されるものとします。
                                 本規約に関する紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
                             </p>
                             <div class="mt-4 p-4 bg-ghost-mint rounded-xl">
                                 <p class="text-sm text-ghost-text font-medium">
-                                    <strong>かんたんに言うと：</strong><br>
-                                    この規約は日本のルールに従います。もし問題が起きたら、日本の裁判所で話し合います。
+                                    <strong data-i18n="terms.simpleLabel">かんたんに言うと：</strong><br>
+                                    <span data-i18n="terms.law.simple">この規約は日本のルールに従います。もし問題が起きたら、日本の裁判所で話し合います。</span>
                                 </p>
                             </div>
                         </div>
@@ -309,14 +324,14 @@
                             <i data-lucide="mail" class="w-5 h-5 text-ghost-orange"></i>
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold mb-3 text-ghost-text">お問い合わせ</h2>
-                            <p class="text-ghost-text-light leading-relaxed mb-4">
+                            <h2 class="text-xl font-bold mb-3 text-ghost-text" data-i18n="terms.contact.title">お問い合わせ</h2>
+                            <p class="text-ghost-text-light leading-relaxed mb-4" data-i18n="terms.contact.text">
                                 本規約に関するご質問やご不明点がございましたら、以下までお問い合わせください。
                             </p>
                             <div class="p-4 bg-ghost-cream-dark rounded-xl">
                                 <p class="text-sm text-ghost-text">
-                                    <strong>開発者：</strong>Shoho Kozawa<br>
-                                    <strong>メール：</strong><a href="mailto:hello@onigiri.work" class="text-ghost-orange hover:underline">hello@onigiri.work</a>
+                                    <strong data-i18n="terms.contact.developer">開発者：</strong>Shoho Kozawa<br>
+                                    <strong data-i18n="terms.contact.email">メール：</strong><a href="mailto:hello@onigiri.work" class="text-ghost-orange hover:underline">hello@onigiri.work</a>
                                 </p>
                             </div>
                         </div>
@@ -329,7 +344,7 @@
             <div class="mt-12 text-center">
                 <a href="index.html" class="inline-flex items-center gap-2 bg-ghost-orange text-white px-6 py-3 rounded-full font-bold hover:bg-ghost-orange-dark transition-all">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                    トップページに戻る
+                    <span data-i18n="terms.backToTop">トップページに戻る</span>
                 </a>
             </div>
 
@@ -339,9 +354,12 @@
     <!-- Footer -->
     <footer class="py-8 border-t border-ghost-border bg-white text-sm text-ghost-text-light">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <p>&copy; 2025 Shoho Kozawa. All rights reserved.</p>
+            <p data-i18n="footer.copyright">&copy; 2025 Shoho Kozawa. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- i18n Script -->
+    <script src="js/i18n.js"></script>
 
     <script>
         lucide.createIcons();
