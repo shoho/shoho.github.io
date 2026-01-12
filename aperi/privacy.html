@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー - Aperi</title>
+  <meta name="description" content="Aperiのプライバシーポリシー">
+  <meta name="theme-color" content="#E91E63">
+  <link rel="icon" type="image/x-icon" href="public/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#E91E63',
+            'primary-dark': '#C2185B',
+            cream: '#FFFAF5',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    ::selection { background: rgba(233, 30, 99, 0.2); }
+    .drawer-overlay { opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+    .drawer-overlay.open { opacity: 1; visibility: visible; }
+    .mobile-drawer { transform: translateX(100%); transition: transform 0.3s ease; }
+    .mobile-drawer.open { transform: translateX(0); }
+  </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+  <!-- Header (always visible on legal pages) -->
+  <header class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center bg-cream/95 backdrop-blur-md shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
+        <img src="public/logo.png" alt="Aperi" class="h-8">
+      </a>
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="index.html#features" class="px-4 py-2 text-gray-700 font-medium rounded-lg hover:text-primary hover:bg-primary/10 transition-colors">機能</a>
+        <a href="terms.html" class="px-4 py-2 text-gray-700 font-medium rounded-lg hover:text-primary hover:bg-primary/10 transition-colors">利用規約</a>
+        <a href="privacy.html" class="px-4 py-2 text-gray-700 font-medium rounded-lg hover:text-primary hover:bg-primary/10 transition-colors">プライバシー</a>
+      </nav>
+      <button class="menu-btn md:hidden flex items-center justify-center w-11 h-11 rounded-lg hover:bg-black/5 transition-colors" aria-label="メニューを開く">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="drawer-overlay fixed inset-0 bg-black/50 z-[1001]"></div>
+  <aside class="mobile-drawer fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[1002] flex flex-col">
+    <div class="flex items-center justify-between p-4 border-b border-gray-200">
+      <img src="public/logo.png" alt="Aperi" class="h-7">
+      <button class="drawer-close flex items-center justify-center w-10 h-10 rounded-lg hover:bg-black/5 text-gray-500" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+    <nav class="flex-1 p-4">
+      <a href="index.html#features" class="drawer-nav-item block px-4 py-3.5 text-gray-700 font-medium rounded-xl mb-1 hover:bg-gray-100 transition-colors">機能</a>
+      <a href="terms.html" class="drawer-nav-item block px-4 py-3.5 text-gray-700 font-medium rounded-xl mb-1 hover:bg-gray-100 transition-colors">利用規約</a>
+      <a href="privacy.html" class="drawer-nav-item block px-4 py-3.5 text-gray-700 font-medium rounded-xl mb-1 hover:bg-gray-100 transition-colors">プライバシー</a>
+    </nav>
+  </aside>
+
+  <main class="pt-16 min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">プライバシーポリシー</h1>
+        <p class="text-sm text-gray-400">最終更新日: 2026年1月11日</p>
+      </div>
+
+      <div class="prose prose-gray max-w-none">
+        <!-- 1. はじめに -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">1. はじめに</h2>
+          <p class="text-gray-600 leading-relaxed mb-3">
+            Shoho Kozawa（以下「当方」といいます）は、iOSアプリ「Aperi」（以下「本アプリ」といいます）におけるユーザーのプライバシーを尊重し、個人情報およびこれに準ずる情報を適切に取り扱います。本プライバシーポリシーは、本アプリにおける情報の取得、利用、保存、第三者への送信・提供等について説明するものです。
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            本プライバシーポリシーは、利用規約の一部を構成します。
+          </p>
+        </section>
+
+        <!-- 2. 取得する情報 -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">2. 取得する情報</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            当方は、本アプリの提供にあたり、以下の情報を取得することがあります。
+          </p>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">2.1 Apple Sign-Inによる認証情報</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed mb-4">
+            <li>Apple ID（メールアドレス、またはプライベートリレーアドレス）</li>
+            <li>ユーザー識別子（Firebase Authentication UID 等）</li>
+          </ul>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">2.2 ユーザーが入力・登録する情報</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed mb-4">
+            <li>味覚プロファイル（好み診断の回答・設定）</li>
+            <li>ワイン記録（ワイン名、メモ、お気に入り／ベスト、ハッシュタグ等）</li>
+            <li>プロフィール画面等でユーザーが登録する任意情報（入力がある場合）</li>
+          </ul>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">2.3 カメラで撮影・送信される情報</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed mb-4">
+            <li>ワインラベル／メニュー等の画像（AI解析のために当方サーバー経由で送信されます）</li>
+            <li>画像解析の結果として生成・保存されるデータ（例：AIが生成した画像、解析結果の一部）</li>
+          </ul>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">2.4 自動的に取得される情報（利用状況・技術情報）</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed">
+            <li>端末情報（機種、OSバージョン、言語設定等）</li>
+            <li>アプリ情報（アプリバージョン、ビルド番号等）</li>
+            <li>利用状況に関する情報（操作ログの一部、イベント情報、エラー情報等）</li>
+            <li>通信に伴い生成される情報（IPアドレス、アクセス日時等）</li>
+          </ul>
+        </section>
+
+        <!-- 3. 利用目的 -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">3. 利用目的</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            当方は、取得した情報を以下の目的で利用します。
+          </p>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">3.1 サービス提供・運営</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed mb-4">
+            <li>ワインラベル／メニューのAI解析、および結果表示</li>
+            <li>ユーザーの好みに基づくマッチング、相性スコア等の表示</li>
+            <li>ワイン記録の保存・同期・表示</li>
+            <li>「お店での伝え方」等の文言生成</li>
+            <li>本人確認、認証、アカウント管理</li>
+            <li>不正利用の検知・防止、セキュリティ確保</li>
+          </ul>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">3.2 サービス改善・品質向上</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed mb-4">
+            <li>利用状況の分析による改善（UI/UX改善、機能改善）</li>
+            <li>バグの発見、調査、修正</li>
+            <li>障害対応、問い合わせ対応</li>
+          </ul>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">3.3 その他</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed">
+            <li>法令等に基づく対応</li>
+            <li>本ポリシーまたは利用規約に基づく対応</li>
+          </ul>
+        </section>
+
+        <!-- 4. 第三者への送信・提供 -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">4. 第三者への送信・提供（委託を含みます）</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            当方は、以下のとおり、サービス提供に必要な範囲で、第三者に情報を送信または提供することがあります。
+          </p>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">4.1 AI解析（AI提供者への送信）</h3>
+          <p class="text-gray-600 leading-relaxed mb-2">
+            当方は、本サービスの提供のため、ワインラベル／メニュー等の画像および解析に必要な情報を、Google Gemini API等のAIサービス提供者（以下「AI提供者」といいます）に送信することがあります。
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-2">
+            AI提供者に送信された情報の取扱いは、AI提供者が定める利用規約・プライバシーポリシー等に従います。当方は、AI提供者による取扱いについて保証しません。
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Google プライバシーポリシー:
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-primary hover:underline">https://policies.google.com/privacy</a>
+          </p>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">4.2 クラウドサービス（保存・同期等）</h3>
+          <p class="text-gray-600 leading-relaxed mb-2">
+            当方は、本アプリの提供・運営のため、以下のクラウドサービスを利用し、ユーザーデータを保存・同期することがあります。
+          </p>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed mb-4">
+            <li>Firebase Authentication（認証）</li>
+            <li>Cloud Firestore（ユーザーデータ・ワイン記録等の保存）</li>
+            <li>Firebase Storage（本サービスの提供に伴い生成された画像等の保存）</li>
+          </ul>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">4.3 利用状況の分析（Analytics）</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            当方は、本アプリの品質改善および利用状況の分析のため、Google Analytics for Firebaseを利用することがあります。
+          </p>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">4.4 法令に基づく提供等</h3>
+          <p class="text-gray-600 leading-relaxed">
+            法令に基づく場合、裁判所・行政機関等の要請がある場合、または人の生命・身体・財産の保護のため必要がある場合等、法令が認める範囲で情報を提供することがあります。
+          </p>
+        </section>
+
+        <!-- 5. 保存・削除 -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">5. 保存・削除（保存場所／保存期間）</h2>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">5.1 保存場所</h3>
+          <p class="text-gray-600 leading-relaxed mb-2">
+            ユーザーデータは、原則として Google Cloud Platform（asia-northeast1 等、日本のリージョン）上に保存されます。
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            ただし、AI解析のためにAI提供者へ送信される情報については、AI提供者のサーバー所在国・リージョンで取り扱われる場合があります。
+          </p>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">5.2 保存の考え方</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed mb-4">
+            <li>ユーザーがアップロードまたは送信した画像自体は保存しません（ただし、AI解析のために一時的に処理されることがあります）。</li>
+            <li>本サービスの提供に伴い生成された画像（ユーザーがアップロードした画像を元にAIが生成した画像を含みます）その他の生成物または結果データについては、ユーザーへの提供、履歴表示、再表示等のために保存する場合があります。</li>
+            <li>ワイン記録や好み等のユーザーデータは、同期・履歴のために保存します。</li>
+          </ul>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">5.3 保存期間</h3>
+          <p class="text-gray-600 leading-relaxed mb-2">
+            当方は、利用目的の達成に必要な期間、情報を保存します。
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-2">
+            ユーザーがアカウント削除を行った場合、当方は原則として30日以内に当該ユーザーのデータ（生成画像を含みます）を削除します。
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            ただし、法令遵守、セキュリティ確保、障害対応、バックアップからの復旧等のため、合理的な範囲で削除が遅れる場合があります。
+          </p>
+        </section>
+
+        <!-- 6. セキュリティ -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">6. セキュリティ</h2>
+          <p class="text-gray-600 leading-relaxed mb-3">
+            当方は、取得した情報を適切に管理し、不正アクセス、漏えい、改ざん等の防止に努めます。
+          </p>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 leading-relaxed">
+            <li>Firebase Authentication等による認証</li>
+            <li>App Check（App Attest）等による正規アプリ検証（導入している場合）</li>
+            <li>通信の暗号化（HTTPS/TLS）</li>
+            <li>アクセス制御、権限管理等の措置</li>
+          </ul>
+        </section>
+
+        <!-- 7. 当方によるAI学習への利用について -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">7. 当方によるAI学習への利用について</h2>
+          <p class="text-gray-600 leading-relaxed mb-3">
+            当方は、ユーザーの送信データ（アップロード画像を含みます）を、当方のモデル学習（AIエンジンの学習・精度向上）目的で利用しません。
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            ただし、AI提供者に送信された情報がAI提供者によりどのように取り扱われるかは、AI提供者の規約・ポリシー等に従うものとします。
+          </p>
+        </section>
+
+        <!-- 8. ユーザーの権利 -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">8. ユーザーの権利（確認・訂正・削除等）</h2>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">8.1 アプリ内でできること</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            ユーザーは、本アプリ内で、味覚プロファイル、ワイン記録等のデータを確認・編集できます。
+          </p>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">8.2 アカウント削除</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            ユーザーは、プロフィール画面の「アカウント削除」から、アカウント削除を申請できます。削除は取り消しできません。
+          </p>
+
+          <h3 class="text-base font-semibold text-gray-800 mb-2">8.3 お問い合わせによる対応</h3>
+          <p class="text-gray-600 leading-relaxed mb-2">
+            ユーザーは、当方に対し、自己に関する情報の取扱いについての質問、確認、訂正、削除等を求めることができます。合理的な範囲で対応します。
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            （本人確認をお願いする場合があります）
+          </p>
+        </section>
+
+        <!-- 9. 未成年者のプライバシー -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">9. 未成年者のプライバシー</h2>
+          <p class="text-gray-600 leading-relaxed">
+            本アプリはアルコール飲料に関する情報を取り扱うため、20歳以上の方を対象としています。当方は、意図的に20歳未満の方から個人情報を収集することはありません。
+          </p>
+        </section>
+
+        <!-- 10. プロモーション利用について -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">10. プロモーション利用について</h2>
+          <p class="text-gray-600 leading-relaxed">
+            当方は、ユーザーの送信データを広告、紹介その他のプロモーション目的で利用する場合、事前にユーザーの個別の同意を取得します。
+          </p>
+        </section>
+
+        <!-- 11. 本ポリシーの変更 -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">11. 本ポリシーの変更</h2>
+          <p class="text-gray-600 leading-relaxed">
+            当方は、必要に応じて本プライバシーポリシーを変更することがあります。重要な変更がある場合は、本アプリ内または当方ウェブサイト等でお知らせします。変更後のポリシーは、当方が周知した日または発効日から適用されます。
+          </p>
+        </section>
+
+        <!-- 12. お問い合わせ -->
+        <section class="mb-8">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">12. お問い合わせ</h2>
+          <p class="text-gray-600 leading-relaxed">
+            プライバシーに関するお問い合わせは、以下までご連絡ください。<br>
+            メール: <a href="mailto:hello@onigiri.work" class="text-primary hover:underline">hello@onigiri.work</a>
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-50 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 md:gap-8">
+        <div class="max-w-[280px]">
+          <img src="public/logo.png" alt="Aperi" class="h-8 mb-4">
+          <p class="text-[15px] text-gray-500 leading-relaxed">
+            ワインは、もっと自由でいい。<br>
+            ワインをもっと気軽に楽しむためのアプリ
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div>
+            <h4 class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-4">リンク</h4>
+            <ul class="space-y-3">
+              <li><a href="index.html" class="text-[15px] text-gray-500 hover:text-primary transition-colors">ホーム</a></li>
+              <li><a href="index.html#features" class="text-[15px] text-gray-500 hover:text-primary transition-colors">機能</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-4">法的情報</h4>
+            <ul class="space-y-3">
+              <li><a href="terms.html" class="text-[15px] text-gray-500 hover:text-primary transition-colors">利用規約</a></li>
+              <li><a href="privacy.html" class="text-[15px] text-gray-500 hover:text-primary transition-colors">プライバシーポリシー</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-4">お問い合わせ</h4>
+            <ul class="space-y-3">
+              <li><a href="mailto:hello@onigiri.work" class="text-[15px] text-gray-500 hover:text-primary transition-colors">hello@onigiri.work</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="h-px bg-gray-200 my-8"></div>
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <p class="text-sm text-gray-400">&copy; 2026 Shoho Kozawa. All rights reserved.</p>
+        <a href="https://apps.apple.com/app/aperi" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-500 text-sm font-medium rounded-full hover:border-primary hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-base">apple</span>
+          App Store
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
