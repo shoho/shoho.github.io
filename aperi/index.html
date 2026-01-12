@@ -6,6 +6,18 @@
   <title>Aperi - ワインをもっと自由に楽しむアプリ</title>
   <meta name="description" content="Aperi - ワインは、もっと自由でいい。ワインをもっと気軽に楽しむためのアプリ">
   <meta name="theme-color" content="#E91E63">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aperi - ワインは、もっと自由でいい">
+  <meta property="og:description" content="専門用語なしで、あなたの好みに合ったワインを見つけるアプリ">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aperi.app/">
+  <meta property="og:image" content="https://aperi.app/public/og-image.png">
+  <meta property="og:locale" content="ja_JP">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aperi - ワインは、もっと自由でいい">
+  <meta name="twitter:description" content="専門用語なしで、あなたの好みに合ったワインを見つけるアプリ">
+  <meta name="twitter:image" content="https://aperi.app/public/og-image.png">
   <link rel="icon" type="image/x-icon" href="public/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,6 +112,13 @@
       border-radius: 50%;
     }
 
+    /* Focus visible styles for accessibility */
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid #E91E63;
+      outline-offset: 2px;
+    }
+
   </style>
 </head>
 <body class="font-sans text-gray-900 bg-cream">
@@ -170,7 +189,7 @@
     </section>
 
     <!-- Use Cases Section -->
-    <section class="py-20 sm:py-16 bg-white">
+    <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-16">
           <span class="inline-block text-xs font-semibold tracking-widest text-primary mb-4">USE CASES</span>
@@ -207,7 +226,7 @@
             </div>
           </div>
           <div class="flex flex-col items-center mt-8">
-            <div class="text-gray-300 mb-4">
+            <div class="text-gray-300 mb-4" aria-hidden="true">
               <span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>
             </div>
             <p class="text-base sm:text-sm text-gray-500 text-center leading-relaxed">
@@ -219,7 +238,7 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section id="features" class="py-16 bg-gradient-to-b from-gray-50 to-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-12">
           <span class="inline-block text-xs font-semibold tracking-widest text-primary mb-4">FEATURES</span>
@@ -230,8 +249,8 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Feature 1 -->
-          <div class="p-7 bg-white rounded-[20px] border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
-            <div class="w-12 h-12 rounded-[14px] bg-[#E91E63] flex items-center justify-center mb-5 text-white">
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#E91E63] flex items-center justify-center mb-5 text-white">
               <span class="material-symbols-outlined text-[28px]">favorite</span>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-2">好み診断</h3>
@@ -245,8 +264,8 @@
           </div>
 
           <!-- Feature 2 -->
-          <div class="p-7 bg-white rounded-[20px] border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
-            <div class="w-12 h-12 rounded-[14px] bg-[#00BCD4] flex items-center justify-center mb-5 text-white">
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#00BCD4] flex items-center justify-center mb-5 text-white">
               <span class="material-symbols-outlined text-[28px]">chat</span>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-2">魔法のフレーズ</h3>
@@ -260,8 +279,8 @@
           </div>
 
           <!-- Feature 3 -->
-          <div class="p-7 bg-white rounded-[20px] border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
-            <div class="w-12 h-12 rounded-[14px] bg-[#9C27B0] flex items-center justify-center mb-5 text-white">
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#9C27B0] flex items-center justify-center mb-5 text-white">
               <span class="material-symbols-outlined text-[28px]">qr_code_scanner</span>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-2">ラベルスキャン</h3>
@@ -275,8 +294,8 @@
           </div>
 
           <!-- Feature 4 -->
-          <div class="p-7 bg-white rounded-[20px] border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
-            <div class="w-12 h-12 rounded-[14px] bg-[#673AB7] flex items-center justify-center mb-5 text-white">
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#673AB7] flex items-center justify-center mb-5 text-white">
               <span class="material-symbols-outlined text-[28px]">document_scanner</span>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-2">メニュースキャン</h3>
@@ -290,8 +309,8 @@
           </div>
 
           <!-- Feature 5 -->
-          <div class="p-7 bg-white rounded-[20px] border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
-            <div class="w-12 h-12 rounded-[14px] bg-[#3F51B5] flex items-center justify-center mb-5 text-white">
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#3F51B5] flex items-center justify-center mb-5 text-white">
               <span class="material-symbols-outlined text-[28px]">wine_bar</span>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-2">マイワイン</h3>
@@ -305,8 +324,8 @@
           </div>
 
           <!-- Feature 6 -->
-          <div class="p-7 bg-white rounded-[20px] border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
-            <div class="w-12 h-12 rounded-[14px] bg-[#FF5722] flex items-center justify-center mb-5 text-white">
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#FF5722] flex items-center justify-center mb-5 text-white">
               <span class="material-symbols-outlined text-[28px]">shopping_cart</span>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-2">ショップで探す</h3>
@@ -323,7 +342,7 @@
     </section>
 
     <!-- Screenshots Section -->
-    <section class="py-24 bg-gradient-to-b from-[#f8f4f1] to-white overflow-hidden">
+    <section class="py-16 bg-gradient-to-b from-[#f8f4f1] to-white overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-10">
           <span class="inline-block text-xs font-semibold tracking-widest text-primary mb-4">SCREENSHOTS</span>
@@ -334,34 +353,46 @@
           </p>
         </div>
         <div class="relative -mx-4 sm:-mx-6">
-          <div class="screenshots-scroll flex justify-center lg:justify-start gap-6 sm:gap-4 px-6 py-8 overflow-x-auto scroll-smooth snap-x snap-mandatory">
+          <div class="screenshots-scroll flex justify-center gap-6 sm:gap-4 px-6 py-8 overflow-x-auto scroll-smooth snap-x snap-mandatory">
             <div class="flex-shrink-0 w-[200px] lg:w-[180px] sm:w-[160px] snap-center group">
-              <div class="relative rounded-3xl sm:rounded-[20px] overflow-hidden shadow-xl aspect-[9/19.5]">
-                <img src="public/screenshots/s1.png" alt="ホーム画面" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform">
+              <div class="relative rounded-3xl sm:rounded-2xl overflow-hidden shadow-xl aspect-[9/19.5]">
+                <picture>
+                  <source srcset="public/screenshots/s1.webp" type="image/webp">
+                  <img src="public/screenshots/s1.png" alt="ホーム画面" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform">
+                </picture>
               </div>
               <span class="block text-center text-sm sm:text-xs font-medium text-gray-500 mt-4 sm:mt-3">ホーム</span>
             </div>
             <div class="flex-shrink-0 w-[200px] lg:w-[180px] sm:w-[160px] snap-center group">
-              <div class="relative rounded-3xl sm:rounded-[20px] overflow-hidden shadow-xl aspect-[9/19.5]">
-                <img src="public/screenshots/s2.png" alt="メニュースキャン" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform">
+              <div class="relative rounded-3xl sm:rounded-2xl overflow-hidden shadow-xl aspect-[9/19.5]">
+                <picture>
+                  <source srcset="public/screenshots/s2.webp" type="image/webp">
+                  <img src="public/screenshots/s2.png" alt="メニュースキャン" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform">
+                </picture>
               </div>
               <span class="block text-center text-sm sm:text-xs font-medium text-gray-500 mt-4 sm:mt-3">メニュースキャン</span>
             </div>
             <div class="flex-shrink-0 w-[200px] lg:w-[180px] sm:w-[160px] snap-center group">
-              <div class="relative rounded-3xl sm:rounded-[20px] overflow-hidden shadow-xl aspect-[9/19.5]">
-                <img src="public/screenshots/s3.png" alt="ラベルスキャン結果" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform">
+              <div class="relative rounded-3xl sm:rounded-2xl overflow-hidden shadow-xl aspect-[9/19.5]">
+                <picture>
+                  <source srcset="public/screenshots/s3.webp" type="image/webp">
+                  <img src="public/screenshots/s3.png" alt="ラベルスキャン結果" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform">
+                </picture>
               </div>
               <span class="block text-center text-sm sm:text-xs font-medium text-gray-500 mt-4 sm:mt-3">ラベルスキャン</span>
             </div>
             <div class="flex-shrink-0 w-[200px] lg:w-[180px] sm:w-[160px] snap-center group">
-              <div class="relative rounded-3xl sm:rounded-[20px] overflow-hidden shadow-xl aspect-[9/19.5]">
-                <img src="public/screenshots/s4.png" alt="マイワイン" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform">
+              <div class="relative rounded-3xl sm:rounded-2xl overflow-hidden shadow-xl aspect-[9/19.5]">
+                <picture>
+                  <source srcset="public/screenshots/s4.webp" type="image/webp">
+                  <img src="public/screenshots/s4.png" alt="マイワイン" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform">
+                </picture>
               </div>
               <span class="block text-center text-sm sm:text-xs font-medium text-gray-500 mt-4 sm:mt-3">マイワイン</span>
             </div>
           </div>
           <div class="flex lg:hidden items-center justify-center gap-2 mt-4 text-gray-400 text-sm">
-            <span class="material-symbols-outlined text-xl">swipe</span>
+            <span class="material-symbols-outlined text-xl" aria-hidden="true">swipe</span>
             <span>スワイプで見る</span>
           </div>
         </div>
@@ -369,7 +400,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-24 bg-white">
+    <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-12">
           <span class="inline-block text-xs font-semibold tracking-widest text-primary mb-4">FAQ</span>
@@ -451,7 +482,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="relative py-24 overflow-hidden">
+    <section class="relative py-16 overflow-hidden">
       <div class="cta-bg absolute inset-0 bg-gradient-to-br from-primary to-primary-dark"></div>
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
         <h2 class="text-3xl sm:text-2xl font-bold text-white mb-3">今すぐ、ワイン選びを楽しくしよう。</h2>
