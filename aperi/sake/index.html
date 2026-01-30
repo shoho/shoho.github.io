@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sake Aperi - 日本酒をもっと自由に楽しむアプリ</title>
+  <meta name="description" content="Sake Aperi - 日本酒は、もっと自由でいい。日本酒をもっと気軽に楽しむためのアプリ">
+  <meta name="theme-color" content="#2C4F7C">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sake Aperi - 日本酒は、もっと自由でいい">
+  <meta property="og:description" content="専門用語なしで、あなたの好みに合った日本酒を見つけるアプリ">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aperi.app/sake/">
+  <meta property="og:image" content="https://aperi.app/sake/public/og-image.png">
+  <meta property="og:locale" content="ja_JP">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sake Aperi - 日本酒は、もっと自由でいい">
+  <meta name="twitter:description" content="専門用語なしで、あなたの好みに合った日本酒を見つけるアプリ">
+  <meta name="twitter:image" content="https://aperi.app/sake/public/og-image.png">
+  <link rel="icon" type="image/x-icon" href="public/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2C4F7C',
+            'primary-dark': '#1A3A5C',
+            accent: '#C49A2A',
+            cream: '#F7F5F0',
+            'warm-gray': '#fafafa',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    ::selection { background: rgba(44, 79, 124, 0.2); }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #2C4F7C 0%, #C49A2A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Header */
+    .app-header {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .app-header.scrolled {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Mobile drawer */
+    .drawer-overlay {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .drawer-overlay.open { opacity: 1; visibility: visible; }
+    .mobile-drawer {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    .mobile-drawer.open { transform: translateX(0); }
+
+    /* FAQ Accordion */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-panel.open .faq-answer { max-height: 500px; }
+    .faq-panel.open .faq-icon { transform: rotate(180deg); }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out both; }
+    .animate-delay-100 { animation-delay: 0.1s; }
+    .animate-delay-200 { animation-delay: 0.2s; }
+    .animate-delay-350 { animation-delay: 0.35s; }
+    .animate-delay-400 { animation-delay: 0.4s; }
+
+    /* Screenshot scroll */
+    .screenshots-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+    .screenshots-scroll::-webkit-scrollbar { display: none; }
+
+    /* Screenshot placeholder */
+    .screenshot-placeholder {
+      background: linear-gradient(135deg, #e8e6e1 0%, #d4d2cd 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8c8a85;
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* CTA background decoration */
+    .cta-bg::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+      border-radius: 50%;
+    }
+
+    /* Focus visible styles for accessibility */
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid #2C4F7C;
+      outline-offset: 2px;
+    }
+
+  </style>
+</head>
+<body class="font-sans text-gray-900 bg-cream">
+  <!-- Header -->
+  <header class="app-header fixed top-0 left-0 right-0 z-50 h-16 flex items-center bg-cream/95 backdrop-blur-md shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
+        <img src="public/logo.png" alt="Sake Aperi" class="h-8">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#features" class="px-4 py-2 text-gray-700 font-medium rounded-lg hover:text-primary hover:bg-primary/10 transition-colors">機能</a>
+        <a href="../terms.html" class="px-4 py-2 text-gray-700 font-medium rounded-lg hover:text-primary hover:bg-primary/10 transition-colors">利用規約</a>
+        <a href="../privacy.html" class="px-4 py-2 text-gray-700 font-medium rounded-lg hover:text-primary hover:bg-primary/10 transition-colors">プライバシー</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="menu-btn md:hidden flex items-center justify-center w-11 h-11 rounded-lg hover:bg-black/5 transition-colors" aria-label="メニューを開く">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="drawer-overlay fixed inset-0 bg-black/50 z-[1001]"></div>
+
+  <!-- Mobile Drawer -->
+  <aside class="mobile-drawer fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[1002] flex flex-col">
+    <div class="flex items-center justify-between p-4 border-b border-gray-200">
+      <img src="public/logo.png" alt="Sake Aperi" class="h-7">
+      <button class="drawer-close flex items-center justify-center w-10 h-10 rounded-lg hover:bg-black/5 text-gray-500" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+    <nav class="flex-1 p-4">
+      <a href="#features" class="drawer-nav-item block px-4 py-3.5 text-gray-700 font-medium rounded-xl mb-1 hover:bg-gray-100 transition-colors">機能</a>
+      <a href="../terms.html" class="drawer-nav-item block px-4 py-3.5 text-gray-700 font-medium rounded-xl mb-1 hover:bg-gray-100 transition-colors">利用規約</a>
+      <a href="../privacy.html" class="drawer-nav-item block px-4 py-3.5 text-gray-700 font-medium rounded-xl mb-1 hover:bg-gray-100 transition-colors">プライバシー</a>
+    </nav>
+  </aside>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen min-h-[100dvh] flex items-center bg-cream overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        <div class="text-center">
+          <img src="public/logo.png" alt="Sake Aperi" class="h-24 sm:h-[72px] mx-auto mb-10 sm:mb-8 animate-fade-in-up">
+          <h1 class="text-2xl sm:text-4xl font-bold leading-relaxed tracking-tight text-gray-900 mb-8 sm:mb-6 animate-fade-in-up animate-delay-100">
+            日本酒は、<span class="gradient-text">もっと自由でいい。</span><br>
+            日本酒は、<span class="gradient-text">難しくない。</span>
+          </h1>
+          <p class="text-lg sm:text-xl font-medium text-gray-700 leading-relaxed mb-6 sm:mb-5 animate-fade-in-up animate-delay-200">
+            難しい言葉なしで、外さない日本酒選びへ。
+          </p>
+          <div class="flex flex-col items-center gap-3 animate-fade-in-up animate-delay-350">
+            <span class="text-sm font-semibold text-primary tracking-wide">無料でダウンロード</span>
+            <a href="#" target="_blank" class="inline-block hover:-translate-y-0.5 hover:opacity-85 transition-all">
+              <img src="public/app-store-badge.svg" alt="App Storeからダウンロード" class="h-12">
+            </a>
+          </div>
+          <p class="text-xs text-gray-400 leading-relaxed mt-10 animate-fade-in-up animate-delay-400">
+            現在は無料です。将来、機能追加に伴い有料プランを導入する可能性があります。課金が発生する場合は事前に明示します。<br>
+            <span class="text-xs text-gray-400">※ご利用にはAppleでのサインインが必要です。</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16">
+          <span class="inline-block text-xs font-semibold tracking-widest text-primary mb-4">USE CASES</span>
+          <h2 class="text-3xl sm:text-2xl font-bold text-gray-900">こんなときにSake Aperi</h2>
+        </div>
+        <div class="max-w-3xl mx-auto">
+          <div class="flex flex-col gap-4 mb-10">
+            <div class="flex items-center gap-5 sm:gap-4 p-5 sm:p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 hover:translate-x-1 transition-all">
+              <div class="flex-shrink-0 w-12 h-12 sm:w-10 sm:h-10 flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark rounded-xl sm:rounded-lg text-white">
+                <span class="material-symbols-outlined text-2xl sm:text-xl">menu_book</span>
+              </div>
+              <div>
+                <p class="text-base sm:text-sm font-bold text-gray-900 mb-1">メニューで迷う</p>
+                <p class="text-sm sm:text-xs text-gray-500 leading-relaxed">日本酒メニューを見ても、どれを選べばいいかわからない</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-5 sm:gap-4 p-5 sm:p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 hover:translate-x-1 transition-all">
+              <div class="flex-shrink-0 w-12 h-12 sm:w-10 sm:h-10 flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark rounded-xl sm:rounded-lg text-white">
+                <span class="material-symbols-outlined text-2xl sm:text-xl">psychology_alt</span>
+              </div>
+              <div>
+                <p class="text-base sm:text-sm font-bold text-gray-900 mb-1">味が想像できない</p>
+                <p class="text-sm sm:text-xs text-gray-500 leading-relaxed">ボトルのラベルを見ても、味が想像できない</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-5 sm:gap-4 p-5 sm:p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 hover:translate-x-1 transition-all">
+              <div class="flex-shrink-0 w-12 h-12 sm:w-10 sm:h-10 flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark rounded-xl sm:rounded-lg text-white">
+                <span class="material-symbols-outlined text-2xl sm:text-xl">help</span>
+              </div>
+              <div>
+                <p class="text-base sm:text-sm font-bold text-gray-900 mb-1">好みが言えない</p>
+                <p class="text-sm sm:text-xs text-gray-500 leading-relaxed">「辛口が好き」くらいしか、好みをうまく言葉にできない</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col items-center mt-8">
+            <div class="text-gray-300 mb-4" aria-hidden="true">
+              <span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>
+            </div>
+            <p class="text-base sm:text-sm text-gray-500 text-center leading-relaxed">
+              Sake Aperiは、あなたの感覚を<span class="text-primary">"日常の言葉"</span>で整理して、選び方まで案内します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <span class="inline-block text-xs font-semibold tracking-widest text-primary mb-4">FEATURES</span>
+          <h2 class="text-3xl sm:text-2xl font-bold text-gray-900 leading-tight">
+            Sake Aperiと一緒に、<br><span class="text-primary">日本酒をもっと楽しく</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Feature 1 -->
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#2C4F7C] flex items-center justify-center mb-5 text-white">
+              <span class="material-symbols-outlined text-[28px]">favorite</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">好み診断</h3>
+            <p class="text-[15px] text-gray-600 leading-relaxed mb-4">5つの質問だけで、好みがはっきりする。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-[#2C4F7C]/10 text-[#2C4F7C] text-xs font-medium rounded-full">5問で診断</span>
+              <span class="px-3 py-1 bg-[#2C4F7C]/10 text-[#2C4F7C] text-xs font-medium rounded-full">日常ことば</span>
+              <span class="px-3 py-1 bg-[#2C4F7C]/10 text-[#2C4F7C] text-xs font-medium rounded-full">好みが見える</span>
+            </div>
+            <p class="text-sm text-gray-500 leading-relaxed">直感で答えるだけ。5つの質問で、「あなたの好き」が見える化されます。次に選ぶときも、迷わない基準が手元に残ります。</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#00BCD4] flex items-center justify-center mb-5 text-white">
+              <span class="material-symbols-outlined text-[28px]">chat</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">魔法のフレーズ</h3>
+            <p class="text-[15px] text-gray-600 leading-relaxed mb-4">「こういうのが好き」が、ひとことで言える。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-[#00BCD4]/10 text-[#00BCD4] text-xs font-medium rounded-full">フレーズ作成</span>
+              <span class="px-3 py-1 bg-[#00BCD4]/10 text-[#00BCD4] text-xs font-medium rounded-full">店で使える</span>
+              <span class="px-3 py-1 bg-[#00BCD4]/10 text-[#00BCD4] text-xs font-medium rounded-full">迷わず選ぶ</span>
+            </div>
+            <p class="text-sm text-gray-500 leading-relaxed">あなたの好みをもとに、店員さんに伝えるフレーズを自動で作ります。言い方に悩まず、自信をもって選べるようになります。</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#9C27B0] flex items-center justify-center mb-5 text-white">
+              <span class="material-symbols-outlined text-[28px]">qr_code_scanner</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">ラベルスキャン</h3>
+            <p class="text-[15px] text-gray-600 leading-relaxed mb-4">ラベルを撮るだけで、味わいが見えてくる。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-[#9C27B0]/10 text-[#9C27B0] text-xs font-medium rounded-full">撮って判定</span>
+              <span class="px-3 py-1 bg-[#9C27B0]/10 text-[#9C27B0] text-xs font-medium rounded-full">味わい表示</span>
+              <span class="px-3 py-1 bg-[#9C27B0]/10 text-[#9C27B0] text-xs font-medium rounded-full">相性スコア</span>
+            </div>
+            <p class="text-sm text-gray-500 leading-relaxed">ラベルを撮るだけで、味わいのイメージをわかりやすく表示します。相性スコアも出るので、好みに近いかをすぐ判断できます。</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#673AB7] flex items-center justify-center mb-5 text-white">
+              <span class="material-symbols-outlined text-[28px]">document_scanner</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">メニュースキャン</h3>
+            <p class="text-[15px] text-gray-600 leading-relaxed mb-4">メニューを撮るだけで、候補を見比べられる。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-[#673AB7]/10 text-[#673AB7] text-xs font-medium rounded-full">メニュー撮影</span>
+              <span class="px-3 py-1 bg-[#673AB7]/10 text-[#673AB7] text-xs font-medium rounded-full">一括整理</span>
+              <span class="px-3 py-1 bg-[#673AB7]/10 text-[#673AB7] text-xs font-medium rounded-full">料理に合う</span>
+            </div>
+            <p class="text-sm text-gray-500 leading-relaxed">メニューを撮ると、日本酒リストを一括チェックして一覧で整理します。味わいのイメージや、料理に合わせやすいポイントがひと目でわかります。</p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#3F51B5] flex items-center justify-center mb-5 text-white">
+              <span class="material-symbols-outlined text-[28px]">local_bar</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">マイ日本酒</h3>
+            <p class="text-[15px] text-gray-600 leading-relaxed mb-4">おいしかった一杯を、忘れない。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-[#3F51B5]/10 text-[#3F51B5] text-xs font-medium rounded-full">あとで見返す</span>
+              <span class="px-3 py-1 bg-[#3F51B5]/10 text-[#3F51B5] text-xs font-medium rounded-full">メモできる</span>
+              <span class="px-3 py-1 bg-[#3F51B5]/10 text-[#3F51B5] text-xs font-medium rounded-full">最高チェック</span>
+            </div>
+            <p class="text-sm text-gray-500 leading-relaxed">気に入った日本酒を、あとで見返せるように残しておけます。メモで自分らしく整理して、「美味しかった」「最高」もワンタップでチェック。増えるほど、好みが見えてきます。</p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="p-7 bg-white rounded-2xl border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all h-full">
+            <div class="w-12 h-12 rounded-xl bg-[#FF5722] flex items-center justify-center mb-5 text-white">
+              <span class="material-symbols-outlined text-[28px]">search</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">銘柄検索</h3>
+            <p class="text-[15px] text-gray-600 leading-relaxed mb-4">気になる銘柄を、名前から調べられる。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-[#FF5722]/10 text-[#FF5722] text-xs font-medium rounded-full">銘柄検索</span>
+              <span class="px-3 py-1 bg-[#FF5722]/10 text-[#FF5722] text-xs font-medium rounded-full">すぐ見つかる</span>
+              <span class="px-3 py-1 bg-[#FF5722]/10 text-[#FF5722] text-xs font-medium rounded-full">情報を確認</span>
+            </div>
+            <p class="text-sm text-gray-500 leading-relaxed">銘柄名で検索すると、味わいの特徴や蔵元の情報がすぐに確認できます。気になる日本酒の情報を、その場で調べられます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="py-16 bg-gradient-to-b from-[#f5f3ee] to-white overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10">
+          <span class="inline-block text-xs font-semibold tracking-widest text-primary mb-4">SCREENSHOTS</span>
+          <h2 class="text-3xl sm:text-2xl font-bold text-gray-900">シンプルで使いやすい</h2>
+          <p class="text-lg text-gray-500 mt-4">
+            診断 → スキャン → 相性 → 記録。<br class="sm:hidden">
+            迷わず使える、やさしい画面設計です。
+          </p>
+        </div>
+        <div class="relative -mx-4 sm:-mx-6">
+          <div class="screenshots-scroll flex justify-center gap-6 sm:gap-4 px-6 py-8 overflow-x-auto scroll-smooth snap-x snap-mandatory">
+            <div class="flex-shrink-0 w-[200px] lg:w-[180px] sm:w-[160px] snap-center group">
+              <div class="relative rounded-3xl sm:rounded-2xl overflow-hidden shadow-xl aspect-[9/19.5] screenshot-placeholder">
+                <span>ホーム画面<br>(準備中)</span>
+              </div>
+              <span class="block text-center text-sm sm:text-xs font-medium text-gray-500 mt-4 sm:mt-3">ホーム</span>
+            </div>
+            <div class="flex-shrink-0 w-[200px] lg:w-[180px] sm:w-[160px] snap-center group">
+              <div class="relative rounded-3xl sm:rounded-2xl overflow-hidden shadow-xl aspect-[9/19.5] screenshot-placeholder">
+                <span>メニュースキャン<br>(準備中)</span>
+              </div>
+              <span class="block text-center text-sm sm:text-xs font-medium text-gray-500 mt-4 sm:mt-3">メニュースキャン</span>
+            </div>
+            <div class="flex-shrink-0 w-[200px] lg:w-[180px] sm:w-[160px] snap-center group">
+              <div class="relative rounded-3xl sm:rounded-2xl overflow-hidden shadow-xl aspect-[9/19.5] screenshot-placeholder">
+                <span>ラベルスキャン<br>(準備中)</span>
+              </div>
+              <span class="block text-center text-sm sm:text-xs font-medium text-gray-500 mt-4 sm:mt-3">ラベルスキャン</span>
+            </div>
+            <div class="flex-shrink-0 w-[200px] lg:w-[180px] sm:w-[160px] snap-center group">
+              <div class="relative rounded-3xl sm:rounded-2xl overflow-hidden shadow-xl aspect-[9/19.5] screenshot-placeholder">
+                <span>マイ日本酒<br>(準備中)</span>
+              </div>
+              <span class="block text-center text-sm sm:text-xs font-medium text-gray-500 mt-4 sm:mt-3">マイ日本酒</span>
+            </div>
+          </div>
+          <div class="flex lg:hidden items-center justify-center gap-2 mt-4 text-gray-400 text-sm">
+            <span class="material-symbols-outlined text-xl" aria-hidden="true">swipe</span>
+            <span>スワイプで見る</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <span class="inline-block text-xs font-semibold tracking-widest text-primary mb-4">FAQ</span>
+          <h2 class="text-3xl sm:text-2xl font-bold text-gray-900">よくある質問</h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="faq-panel border border-gray-200 rounded-xl mb-4 overflow-hidden">
+            <button class="faq-question w-full flex items-center justify-between px-6 py-5 bg-white text-left text-base font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+              <span>Sake Aperiは無料で使えますか？</span>
+              <span class="faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center transition-transform text-gray-400">
+                <span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-5 text-[15px] text-gray-500 leading-relaxed">
+                現在は無料でご利用いただけます。将来、有料プランを導入する場合は、課金が発生する前にアプリ内やストア表示で事前にご案内します。
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-panel border border-gray-200 rounded-xl mb-4 overflow-hidden">
+            <button class="faq-question w-full flex items-center justify-between px-6 py-5 bg-white text-left text-base font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+              <span>日本酒の知識がなくても使えますか？</span>
+              <span class="faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center transition-transform text-gray-400">
+                <span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-5 text-[15px] text-gray-500 leading-relaxed">
+                はい。専門用語を覚えなくても、質問に答えたりラベルをスキャンするだけで、味わいのイメージや選び方のヒントがわかります。
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-panel border border-gray-200 rounded-xl mb-4 overflow-hidden">
+            <button class="faq-question w-full flex items-center justify-between px-6 py-5 bg-white text-left text-base font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+              <span>どんな日本酒でもスキャンできますか？</span>
+              <span class="faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center transition-transform text-gray-400">
+                <span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-5 text-[15px] text-gray-500 leading-relaxed">
+                多くの日本酒に対応しています。うまく読み取れない場合も、銘柄名で検索して調べられるようにしています。
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-panel border border-gray-200 rounded-xl mb-4 overflow-hidden">
+            <button class="faq-question w-full flex items-center justify-between px-6 py-5 bg-white text-left text-base font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+              <span>データはどこに保存されますか？</span>
+              <span class="faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center transition-transform text-gray-400">
+                <span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-5 text-[15px] text-gray-500 leading-relaxed">
+                プライバシーポリシーに沿って安全に管理します。詳細はプライバシーポリシーをご確認ください。
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-panel border border-gray-200 rounded-xl mb-4 overflow-hidden">
+            <button class="faq-question w-full flex items-center justify-between px-6 py-5 bg-white text-left text-base font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+              <span>サインインは必要ですか？</span>
+              <span class="faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center transition-transform text-gray-400">
+                <span class="material-symbols-outlined text-xl">keyboard_arrow_down</span>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <div class="px-6 pb-5 text-[15px] text-gray-500 leading-relaxed">
+                はい。ご利用にはAppleでのサインインが必要です。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-16 overflow-hidden">
+      <div class="cta-bg absolute inset-0 bg-gradient-to-br from-primary to-primary-dark"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-3xl sm:text-2xl font-bold text-white mb-3">今すぐ、日本酒選びを楽しくしよう。</h2>
+        <p class="text-lg text-white/90 mb-8">Sake Aperiは無料でダウンロードできます。</p>
+        <div class="flex flex-col items-center gap-3">
+          <span class="text-sm font-semibold text-white/95 tracking-wide">無料でダウンロード</span>
+          <a href="#" target="_blank" class="inline-block hover:-translate-y-0.5 hover:opacity-90 transition-all">
+            <img src="public/app-store-badge.svg" alt="App Storeからダウンロード" class="h-12">
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 md:gap-8">
+        <div class="max-w-[280px]">
+          <img src="public/logo.png" alt="Sake Aperi" class="h-8 mb-4">
+          <p class="text-[15px] text-gray-500 leading-relaxed">
+            日本酒は、もっと自由でいい。<br>
+            日本酒をもっと気軽に楽しむためのアプリ
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div>
+            <h4 class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-4">リンク</h4>
+            <ul class="space-y-3">
+              <li><a href="index.html" class="text-[15px] text-gray-500 hover:text-primary transition-colors">ホーム</a></li>
+              <li><a href="#features" class="text-[15px] text-gray-500 hover:text-primary transition-colors">機能</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-4">法的情報</h4>
+            <ul class="space-y-3">
+              <li><a href="../terms.html" class="text-[15px] text-gray-500 hover:text-primary transition-colors">利用規約</a></li>
+              <li><a href="../privacy.html" class="text-[15px] text-gray-500 hover:text-primary transition-colors">プライバシーポリシー</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-4">お問い合わせ</h4>
+            <ul class="space-y-3">
+              <li><a href="mailto:hello@onigiri.work" class="text-[15px] text-gray-500 hover:text-primary transition-colors">hello@onigiri.work</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-px bg-gray-200 my-8"></div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <p class="text-sm text-gray-400">&copy; 2026 Shoho Kozawa. All rights reserved.</p>
+        <a href="#" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-500 text-sm font-medium rounded-full hover:border-primary hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-base">apple</span>
+          App Store
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
